@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Project</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Consolas, monospace;
+}
+
+body{
+background:#0d1117;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+
+.window{
+width:850px;
+max-width:95%;
+background:#161b22;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(0,0,0,.5);
+}
+
+.topbar{
+background:#21262d;
+padding:12px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+}
+
+.red{background:#ff5f57;}
+.yellow{background:#febc2e;}
+.green{background:#28c840;}
+
+.editor{
+padding:25px;
+min-height:450px;
+}
+
+button{
+background:#238636;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+margin-bottom:20px;
+}
+
+button:hover{
+background:#2ea043;
+}
+
+#code{
+white-space:pre-wrap;
+line-height:1.8;
+font-size:18px;
+color:#79c0ff;
+}
+
+#final{
+display:none;
+margin-top:25px;
+padding:18px;
+background:#0d1117;
+border-left:4px solid #3fb950;
+font-size:19px;
+color:#3fb950;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="window">
+
+<div class="topbar">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="editor">
+
+<button onclick="runCode()">▶ Run birthday.js</button>
+
+<div id="code"></div>
+
+<div id="final">
+✅ Build Successful
+
+🎉 Happy Birthday!
+
+To my favorite developer,
+
+May your code always compile,
+your bugs always disappear,
+your coffee never get cold,
+and your dreams always become reality.
+
+You are one of my favorite people.
+Have the happiest birthday ever. ❤️
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const text = `const bestFriend = "YOUR NAME";
+
+function celebrate(){
+
+   console.log("Loading birthday package...");
+
+   console.log("Checking friendship...");
+
+   console.log("Friend detected ❤️");
+
+   console.log("Deploying happiness...");
+
+   console.log("Launching birthday surprise...");
+}
+
+celebrate();`;
+
+let i=0;
+
+function runCode(){
+
+document.getElementById("code").innerHTML="";
+document.getElementById("final").style.display="none";
+
+typing();
+
+}
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("code").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,25);
+
+}else{
+
+i=0;
+
+setTimeout(()=>{
+
+document.getElementById("final").style.display="block";
+
+confetti();
+
+},700);
+
+}
+
+}
+
+function confetti(){
+
+for(let j=0;j<150;j++){
+
+let c=document.createElement("div");
+
+c.innerHTML="🎉";
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-30px";
+
+c.style.fontSize=(15+Math.random()*20)+"px";
+
+c.style.transition="4s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.style.top="110vh";
+
+},100);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4500);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
